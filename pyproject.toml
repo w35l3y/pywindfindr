@@ -22,8 +22,14 @@ dependencies = ["requests"]
 dynamic = ["version", "readme"]
 
 [project.urls]
-"Homepage" = "https://github.com/w35l3y/pywindfindr/"
+"Homepage" = "https://github.com/w35l3y/pywindfindr"
 "Bug Tracker" = "https://github.com/w35l3y/pywindfindr/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.setuptools.dynamic]
 version = {attr = "windfindr.__version__"}
