@@ -3,7 +3,7 @@
 import unittest
 from unittest import mock
 
-from windfindr import Windfindr
+from src.windfindr import Windfindr
 
 # This method will be used by the mock to replace requests.get
 def mocked_requests_get(*args, **kwargs):  # pylint: disable=unused-argument

@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from windfindr.utils import (
+from src.windfindr.utils import (
     filter_by,
     get_current_index,
     get_inverted_tp,
