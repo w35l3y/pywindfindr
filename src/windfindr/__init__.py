@@ -7,7 +7,7 @@ import re
 
 import requests
 
-from windfindr import utils
+from src.windfindr import utils
 
 _LOGGER = logging.getLogger(__name__)
 
