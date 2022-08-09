@@ -25,10 +25,6 @@ dynamic = ["version", "readme"]
 "Homepage" = "https://github.com/w35l3y/pywindfindr/"
 "Bug Tracker" = "https://github.com/w35l3y/pywindfindr/issues"
 
-[tool.setuptools]
-packages = ["windfindr"]
-zip-safe = false
-
 [tool.setuptools.dynamic]
 version = {attr = "windfindr.__version__"}
 readme = {file = ["README.md"]}
