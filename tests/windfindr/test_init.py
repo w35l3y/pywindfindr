@@ -44,7 +44,7 @@ class WindfindrTestCase(unittest.TestCase):
         assert api._attr_customer == "wfweb"  # pylint: disable=protected-access
         assert api._attr_token is None  # pylint: disable=protected-access
 
-    @mock.patch('windfindr.requests.get', side_effect=mocked_requests_get)
+    @mock.patch('src.windfindr.requests.get', side_effect=mocked_requests_get)
     def test_tides_with_default_parameters_same_token(self, mock_get):  # pylint: disable=unused-argument, bad-option-value, useless-option-value, no-self-use
         """Test tides with default parameters"""
         api = Windfindr()
