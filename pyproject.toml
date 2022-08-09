@@ -11,9 +11,6 @@ license = { file="LICENSE" }
 authors = [
     {name = "Wesley Menezes", email = "www.wesley@gmail.com"}
 ]
-url = "https://github.com/w35l3y/pywindfindr/"
-long_description = "file: README.md"
-long_description_content_type = "text/markdown"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -24,12 +21,6 @@ dynamic = ["version", "readme"]
 [project.urls]
 "Homepage" = "https://github.com/w35l3y/pywindfindr"
 "Bug Tracker" = "https://github.com/w35l3y/pywindfindr/issues"
-
-[tool.setuptools]
-package-dir = { "" = "src" }
-
-[tool.setuptools.packages.find]
-where = ["src"]
 
 [tool.setuptools.dynamic]
 version = {attr = "windfindr.__version__"}
