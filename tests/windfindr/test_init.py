@@ -32,6 +32,16 @@ def mocked_requests_get(*args, **kwargs):  # pylint: disable=unused-argument
 
     return MockResponse(None, 404)
 
+def mocked_httpx_client(*args, **kwargs):  # pylint: disable=unused-argument
+    """mocked_httpx_get"""
+
+    class MockClient:
+        """MockClient"""
+
+        async def get(url):
+            return mocked_requests_get(url)
+
+    return MockClient()
 
 class WindfindrTestCase(unittest.TestCase):
     """WindfindrTestCase"""
@@ -44,26 +54,26 @@ class WindfindrTestCase(unittest.TestCase):
         assert api._attr_customer == "wfweb"  # pylint: disable=protected-access
         assert api._attr_token is None  # pylint: disable=protected-access
 
-    @mock.patch('src.windfindr.requests.get', side_effect=mocked_requests_get)
-    def test_tides_with_default_parameters_same_token(self, mock_get):  # pylint: disable=unused-argument, bad-option-value, useless-option-value, no-self-use
+    @mock.patch('src.windfindr.request.AsyncClient', side_effect=mocked_httpx_client)
+    async def test_tides_with_default_parameters_same_token(self, mock_get):  # pylint: disable=unused-argument, bad-option-value, useless-option-value, no-self-use
         """Test tides with default parameters"""
         api = Windfindr()
 
         token = api._attr_token  # pylint: disable=protected-access
         assert token is None
 
-        result1 = api.tides("br854")
+        result1 = await api.tides("br854")
 
         token = api._attr_token  # pylint: disable=protected-access
         assert not token is None
         assert result1["available"] is True
 
-        result2 = api.tides("70933")
+        result2 = await api.tides("70933")
 
         assert token == api._attr_token  # pylint: disable=protected-access
         assert result2["available"] is True
 
-        result2 = api.tides("br854")
+        result2 = await api.tides("br854")
 
         assert token == api._attr_token  # pylint: disable=protected-access
         assert result2["available"] is True
