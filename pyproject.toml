@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pywindfindr"
 description = "Library to communicate with the windfinder API"
-requires-python = ">=3.6"
+requires-python = ">=3.10"
 keywords = ["windfinder"]
 license = { file="LICENSE" }
 authors = [
