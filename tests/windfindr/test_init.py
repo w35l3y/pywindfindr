@@ -1,5 +1,6 @@
 """Tests for windfindr"""
 
+import pytest
 import unittest
 from unittest import mock
 
@@ -35,11 +36,12 @@ def mocked_requests_get(*args, **kwargs):  # pylint: disable=unused-argument
 def mocked_httpx_client(*args, **kwargs):  # pylint: disable=unused-argument
     """mocked_httpx_get"""
 
-    class MockClient:
+    class MockClient:  # pylint: disable=too-few-public-methods
         """MockClient"""
 
-        async def get(url):
-            return mocked_requests_get(url)
+        async def get(self, *args, **kwargs):
+            """get"""
+            return mocked_requests_get(*args, **kwargs)
 
     return MockClient()
 
@@ -54,6 +56,7 @@ class WindfindrTestCase(unittest.TestCase):
         assert api._attr_customer == "wfweb"  # pylint: disable=protected-access
         assert api._attr_token is None  # pylint: disable=protected-access
 
+    @pytest.mark.asyncio
     @mock.patch('src.windfindr.request.AsyncClient', side_effect=mocked_httpx_client)
     async def test_tides_with_default_parameters_same_token(self, mock_get):  # pylint: disable=unused-argument, bad-option-value, useless-option-value, no-self-use
         """Test tides with default parameters"""
