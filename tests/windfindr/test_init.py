@@ -1,6 +1,5 @@
 """Tests for windfindr"""
 
-import pytest
 import unittest
 from unittest import mock
 
@@ -45,7 +44,7 @@ def mocked_httpx_client(*args, **kwargs):  # pylint: disable=unused-argument
 
     return MockClient()
 
-class WindfindrTestCase(unittest.TestCase):
+class WindfindrTestCase(unittest.IsolatedAsyncioTestCase):
     """WindfindrTestCase"""
 
     def test_default_parameters(self):  # pylint: disable=bad-option-value, useless-option-value, no-self-use
@@ -56,7 +55,6 @@ class WindfindrTestCase(unittest.TestCase):
         assert api._attr_customer == "wfweb"  # pylint: disable=protected-access
         assert api._attr_token is None  # pylint: disable=protected-access
 
-    @pytest.mark.asyncio
     @mock.patch('src.windfindr.request.AsyncClient', side_effect=mocked_httpx_client)
     async def test_tides_with_default_parameters_same_token(self, mock_get):  # pylint: disable=unused-argument, bad-option-value, useless-option-value, no-self-use
         """Test tides with default parameters"""
