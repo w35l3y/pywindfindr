@@ -18,10 +18,10 @@ TIDES_API_URL = "https://api.windfinder.com/v2/spots/{}/tides/"
 class Windfindr:  # pylint: disable=too-few-public-methods
     """Windfindr API"""
 
-    def __init__(self, version="1.0", customer="wfweb", apiKey=None):
+    def __init__(self, version="1.0", customer="wfweb", api_key=None):
         self._attr_version = version
         self._attr_customer = customer
-        self._attr_apiKey = apiKey
+        self._attr_api_key = api_key
         self._attr_token = None
         self._attr_client = None
 
