@@ -7,11 +7,11 @@ import re
 
 import httpx as request
 
-from src.windfindr import utils
+from . import utils
 
 _LOGGER = logging.getLogger(__name__)
 
-__version__ = "2.0.1"
+VERSION = "2.0.2"
 
 TIDES_API_URL = "https://api.windfinder.com/v2/spots/{}/tides/"
 
